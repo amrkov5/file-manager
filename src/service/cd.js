@@ -1,6 +1,5 @@
 import process from 'process';
 import path from 'path';
-import fs from 'fs';
 import isAbsolute from './isPathAbsolute.js';
 
 const changeDirectory = (pathToFolder) => {

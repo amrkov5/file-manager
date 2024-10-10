@@ -1,3 +1,4 @@
+import catFile from './cat.js';
 import listFiles from './ls.js';
 import osOperations from './os.js';
 
@@ -6,7 +7,7 @@ const inputHandler = async (inputArr) => {
     case 'os':
       osOperations(inputArr[1]);
     case 'cat':
-      console.log('cat invoked', inputArr);
+      await catFile(inputArr.slice(1));
       break;
     case 'add':
       console.log('add invoked', inputArr);
