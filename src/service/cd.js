@@ -3,14 +3,12 @@ import path from 'path';
 import isAbsolute from './isPathAbsolute.js';
 
 const changeDirectory = (pathToFolder) => {
-  const isPathAbsolute = isAbsolute(pathToFolder.join(' '));
   try {
+    const isPathAbsolute = isAbsolute(pathToFolder);
     if (isPathAbsolute) {
-      process.chdir(pathToFolder.join(' '));
+      process.chdir(pathToFolder);
     } else {
-      console.log(path.join(process.cwd(), pathToFolder.join(' ')));
-
-      const destPath = path.join(process.cwd(), pathToFolder.join(' '));
+      const destPath = path.join(process.cwd(), pathToFolder);
       process.chdir(destPath);
     }
   } catch (err) {

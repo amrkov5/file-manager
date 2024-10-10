@@ -7,7 +7,7 @@ const inputHandler = async (inputArr) => {
     case 'os':
       osOperations(inputArr[1]);
     case 'cat':
-      await catFile(inputArr.slice(1));
+      await catFile(inputArr[1]);
       break;
     case 'add':
       console.log('add invoked', inputArr);

@@ -3,16 +3,18 @@ import readline from 'readline';
 import os from 'os';
 import inputHandler from './service/inputHandler.js';
 import changeDirectory from './service/cd.js';
+import handlePath from './service/handlePath.js';
 
 const startManager = () => {
   const userName = process.env.npm_config_username || 'Anonymous';
   const rl = readline.createInterface(process.stdin, process.stdout);
   process.stdout.write(`Welcome to the File Manager, ${userName}!\n`);
+  process.stdout.write(`Please use " for path with spaces.\n`);
   process.chdir(os.homedir());
   rl.setPrompt(`You are currently in ${process.cwd()}\n${userName}>`);
   rl.prompt();
   rl.on('line', async (line) => {
-    const splittedLine = line.trim().split(' ');
+    const splittedLine = handlePath(line.trim());
     if (splittedLine.includes('.exit')) {
       rl.close();
     }
@@ -31,7 +33,7 @@ const startManager = () => {
       }
       rl.setPrompt(`You are currently in ${process.cwd()}\n${userName}>`);
     } else if (splittedLine[0] === 'cd') {
-      changeDirectory(splittedLine.slice(1));
+      changeDirectory(splittedLine[1]);
       rl.setPrompt(`You are currently in ${process.cwd()}\n${userName}>`);
     } else {
       await inputHandler(splittedLine);
