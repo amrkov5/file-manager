@@ -1,5 +1,6 @@
 import addFile from './add.js';
 import catFile from './cat.js';
+import copyFile from './cp.js';
 import listFiles from './ls.js';
 import osOperations from './os.js';
 import removeFile from './rm.js';
@@ -31,7 +32,11 @@ const inputHandler = async (inputArr) => {
       }
       break;
     case 'cp':
-      console.log('cp invoked', inputArr);
+      try {
+        await copyFile(inputArr.slice(1));
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'mv':
       console.log('mv invoked', inputArr);
