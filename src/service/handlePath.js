@@ -8,7 +8,7 @@ const handlePath = (string) => {
       ].filter((el) => !!el.trim());
       return handledPath;
     }
-    return splittedPath;
+    return splittedPath.forEach((el) => el.trim());
   } else {
     const handledPath = string.split(' ');
     return handledPath;

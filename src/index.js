@@ -9,7 +9,10 @@ const startManager = () => {
   const userName = process.env.npm_config_username || 'Anonymous';
   const rl = readline.createInterface(process.stdin, process.stdout);
   process.stdout.write(`Welcome to the File Manager, ${userName}!\n`);
-  process.stdout.write(`Please use " for path with spaces.\n`);
+  console.log(
+    '\x1b[32m%s\x1b[0m',
+    `Please use "double quotes" for path with spaces.`
+  );
   process.chdir(os.homedir());
   rl.setPrompt(`You are currently in ${process.cwd()}\n${userName}>`);
   rl.prompt();

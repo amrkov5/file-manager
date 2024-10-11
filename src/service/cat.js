@@ -4,10 +4,10 @@ import path from 'path';
 import isAbsolute from './isPathAbsolute.js';
 
 const catFile = async (pathToFile) => {
-  const isPathAbsolute = isAbsolute(pathToFile.join(' '));
+  const isPathAbsolute = isAbsolute(pathToFile);
   let destPath = isPathAbsolute
-    ? pathToFile.join(' ')
-    : path.join(process.cwd(), pathToFile.join(' '));
+    ? pathToFile
+    : path.join(process.cwd(), pathToFile);
   return new Promise((resolve, reject) => {
     try {
       const readStream = fs.createReadStream(destPath);
@@ -17,8 +17,10 @@ const catFile = async (pathToFile) => {
         process.stdout.write('\n');
         resolve();
       });
+      readStream.on('error', () => {
+        reject();
+      });
     } catch (err) {
-      console.error('Operation failed');
       reject(err);
     }
   });
