@@ -3,6 +3,7 @@ import catFile from './cat.js';
 import listFiles from './ls.js';
 import osOperations from './os.js';
 import removeFile from './rm.js';
+import renameFile from './rn.js';
 
 const inputHandler = async (inputArr) => {
   switch (inputArr[0]) {
@@ -23,7 +24,11 @@ const inputHandler = async (inputArr) => {
       }
       break;
     case 'rn':
-      console.log('rn invoked', inputArr);
+      try {
+        await renameFile(inputArr.slice(1));
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'cp':
       console.log('cp invoked', inputArr);
