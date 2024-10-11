@@ -2,6 +2,7 @@ import addFile from './add.js';
 import catFile from './cat.js';
 import listFiles from './ls.js';
 import osOperations from './os.js';
+import removeFile from './rm.js';
 
 const inputHandler = async (inputArr) => {
   switch (inputArr[0]) {
@@ -31,7 +32,11 @@ const inputHandler = async (inputArr) => {
       console.log('mv invoked', inputArr);
       break;
     case 'rm':
-      console.log('rm invoked', inputArr);
+      try {
+        await removeFile(inputArr[1]);
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'hash':
       console.log('hash invoked', inputArr);
