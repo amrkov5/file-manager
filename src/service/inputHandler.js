@@ -2,6 +2,7 @@ import addFile from './add.js';
 import catFile from './cat.js';
 import copyFile from './cp.js';
 import listFiles from './ls.js';
+import moveFile from './mv.js';
 import osOperations from './os.js';
 import removeFile from './rm.js';
 import renameFile from './rn.js';
@@ -39,7 +40,11 @@ const inputHandler = async (inputArr) => {
       }
       break;
     case 'mv':
-      console.log('mv invoked', inputArr);
+      try {
+        await moveFile(inputArr.slice(1));
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'rm':
       try {
