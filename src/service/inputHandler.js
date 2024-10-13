@@ -1,6 +1,7 @@
 import addFile from './add.js';
 import catFile from './cat.js';
 import copyFile from './cp.js';
+import createHash from './hash.js';
 import listFiles from './ls.js';
 import moveFile from './mv.js';
 import osOperations from './os.js';
@@ -54,7 +55,11 @@ const inputHandler = async (inputArr) => {
       }
       break;
     case 'hash':
-      console.log('hash invoked', inputArr);
+      try {
+        await createHash(inputArr[1]);
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'compress':
       console.log('compress invoked', inputArr);
