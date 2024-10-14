@@ -5,9 +5,10 @@ import isAbsolute from './isPathAbsolute.js';
 
 const removeFile = async (pathToFile) => {
   const isPathAbsolute = isAbsolute(pathToFile);
-  let destPath = isPathAbsolute
+  const destPath = isPathAbsolute
     ? pathToFile
     : path.join(process.cwd(), pathToFile);
+
   return new Promise((resolve, reject) => {
     fs.rm(destPath, (err) => {
       if (err) {

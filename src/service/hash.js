@@ -6,9 +6,10 @@ import isAbsolute from './isPathAbsolute.js';
 
 const createHash = (pathToFile) => {
   const isPathAbsolute = isAbsolute(pathToFile);
-  let destPath = isPathAbsolute
+  const destPath = isPathAbsolute
     ? pathToFile
     : path.join(process.cwd(), pathToFile);
+
   return new Promise((resolve, reject) => {
     const hash = crypto.createHash('sha256');
     const input = fs.createReadStream(destPath);

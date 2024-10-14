@@ -7,6 +7,8 @@ import moveFile from './mv.js';
 import osOperations from './os.js';
 import removeFile from './rm.js';
 import renameFile from './rn.js';
+import decompressFile from './unzip.js';
+import compressFile from './zip.js';
 
 const inputHandler = async (inputArr) => {
   switch (inputArr[0]) {
@@ -62,10 +64,18 @@ const inputHandler = async (inputArr) => {
       }
       break;
     case 'compress':
-      console.log('compress invoked', inputArr);
+      try {
+        await compressFile(inputArr.slice(1));
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'decompress':
-      console.log('decompress invoked', inputArr);
+      // try {
+      await decompressFile(inputArr.slice(1));
+      // } catch {
+      //   console.error('Operation failed');
+      // }
       break;
     case 'ls':
       if (inputArr.length > 1) {

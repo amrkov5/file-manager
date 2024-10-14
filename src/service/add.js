@@ -6,9 +6,10 @@ import GREEN_TEXT from './constants.js';
 
 const addFile = async (pathToFile) => {
   const isPathAbsolute = isAbsolute(pathToFile);
-  let destPath = isPathAbsolute
+  const destPath = isPathAbsolute
     ? pathToFile
     : path.join(process.cwd(), pathToFile);
+
   return new Promise((resolve, reject) => {
     try {
       fs.stat(destPath, (err) => {

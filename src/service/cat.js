@@ -5,9 +5,10 @@ import isAbsolute from './isPathAbsolute.js';
 
 const catFile = async (pathToFile) => {
   const isPathAbsolute = isAbsolute(pathToFile);
-  let destPath = isPathAbsolute
+  const destPath = isPathAbsolute
     ? pathToFile
     : path.join(process.cwd(), pathToFile);
+
   return new Promise((resolve, reject) => {
     try {
       const readStream = fs.createReadStream(destPath);

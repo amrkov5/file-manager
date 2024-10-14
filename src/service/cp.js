@@ -6,12 +6,12 @@ import GREEN_TEXT from './constants.js';
 
 const copyFile = (pathArr) => {
   const isSourcePathAbsolute = isAbsolute(pathArr[0]);
-  let sourcePath = isSourcePathAbsolute
+  const sourcePath = isSourcePathAbsolute
     ? pathArr[0]
     : path.join(process.cwd(), pathArr[0]);
 
   const isDestPathAbsolute = isAbsolute(pathArr[1]);
-  let destPath = isDestPathAbsolute
+  const destPath = isDestPathAbsolute
     ? pathArr[1]
     : path.join(process.cwd(), pathArr[1]);
 
