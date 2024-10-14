@@ -3,6 +3,10 @@ import path from 'path';
 import isAbsolute from './isPathAbsolute.js';
 
 const changeDirectory = (pathToFolder) => {
+  if (!pathToFile) {
+    console.error('Invalid input.');
+    return;
+  }
   try {
     const isPathAbsolute = isAbsolute(pathToFolder);
     if (isPathAbsolute) {

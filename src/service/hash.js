@@ -5,6 +5,11 @@ import process from 'process';
 import isAbsolute from './isPathAbsolute.js';
 
 const createHash = (pathToFile) => {
+  if (!pathToFile) {
+    console.error('Invalid input.');
+    return;
+  }
+
   const isPathAbsolute = isAbsolute(pathToFile);
   const destPath = isPathAbsolute
     ? pathToFile

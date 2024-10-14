@@ -14,6 +14,7 @@ const inputHandler = async (inputArr) => {
   switch (inputArr[0]) {
     case 'os':
       osOperations(inputArr[1]);
+      break;
     case 'cat':
       try {
         await catFile(inputArr[1]);
@@ -71,11 +72,11 @@ const inputHandler = async (inputArr) => {
       }
       break;
     case 'decompress':
-      // try {
-      await decompressFile(inputArr.slice(1));
-      // } catch {
-      //   console.error('Operation failed');
-      // }
+      try {
+        await decompressFile(inputArr.slice(1));
+      } catch {
+        console.error('Operation failed');
+      }
       break;
     case 'ls':
       if (inputArr.length > 1) {

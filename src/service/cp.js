@@ -5,6 +5,10 @@ import isAbsolute from './isPathAbsolute.js';
 import GREEN_TEXT from './constants.js';
 
 const copyFile = (pathArr) => {
+  if (pathArr.length < 2) {
+    console.error('Invalid input.');
+    return;
+  }
   const isSourcePathAbsolute = isAbsolute(pathArr[0]);
   const sourcePath = isSourcePathAbsolute
     ? pathArr[0]
@@ -12,8 +16,8 @@ const copyFile = (pathArr) => {
 
   const isDestPathAbsolute = isAbsolute(pathArr[1]);
   const destPath = isDestPathAbsolute
-    ? pathArr[1]
-    : path.join(process.cwd(), pathArr[1]);
+    ? path.join(pathArr[1], path.parse(sourcePath).base)
+    : path.join(process.cwd(), pathArr[1], path.parse(sourcePath).base);
 
   return new Promise((resolve, reject) => {
     try {

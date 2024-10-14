@@ -29,8 +29,6 @@ const osOperations = (arg) => {
   if (fixedArg === 'architecture') {
     console.log(os.arch());
   }
-
-  console.log('Invalid input');
 };
 
 export default osOperations;

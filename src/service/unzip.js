@@ -6,6 +6,10 @@ import zlib from 'zlib';
 import isAbsolute from './isPathAbsolute.js';
 
 const decompressFile = async (pathArr) => {
+  if (pathArr.length < 2) {
+    console.error('Invalid input.');
+    return;
+  }
   const isSourcePathAbsolute = isAbsolute(pathArr[0]);
   const sourcePath = isSourcePathAbsolute
     ? pathArr[0]

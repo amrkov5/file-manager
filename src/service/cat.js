@@ -4,6 +4,10 @@ import path from 'path';
 import isAbsolute from './isPathAbsolute.js';
 
 const catFile = async (pathToFile) => {
+  if (!pathToFile) {
+    console.error('Invalid input.');
+    return;
+  }
   const isPathAbsolute = isAbsolute(pathToFile);
   const destPath = isPathAbsolute
     ? pathToFile

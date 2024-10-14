@@ -5,6 +5,10 @@ import isAbsolute from './isPathAbsolute.js';
 import GREEN_TEXT from './constants.js';
 
 const addFile = async (pathToFile) => {
+  if (!pathToFile) {
+    console.error('Invalid input.');
+    return;
+  }
   const isPathAbsolute = isAbsolute(pathToFile);
   const destPath = isPathAbsolute
     ? pathToFile
