@@ -20,6 +20,7 @@ const startManager = () => {
     const splittedLine = handlePath(line.trim());
     if (splittedLine.includes('.exit')) {
       rl.close();
+      return;
     }
     if (splittedLine[0] === 'up') {
       try {
